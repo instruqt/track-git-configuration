@@ -1,0 +1,9 @@
+#!/bin/bash
+# Check if the .git/config file was accessed
+# See setup for details
+if grep -q success "/tmp/result"; then
+  echo "DIAG: The local Git config was not accessed"
+  exit 1
+fi
+
+exit 0

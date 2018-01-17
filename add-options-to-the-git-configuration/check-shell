@@ -1,0 +1,16 @@
+#!/bin/bash
+# Check if the my-repo directory exists.
+if [ ! -d "/root/my-repo" ]; then
+  echo "DIAG: No repository found at /root/my-repo"
+  exit 1
+fi
+
+# check if the user.name config option is set.
+cd /root/my-repo
+USER_NAME=$(git config --get user.name)
+if [ -z $USER_NAME ]; then
+  echo "DIAG: No value found for user.name in the config of /root/my-repo"
+  exit 1
+fi
+
+exit 0

@@ -1,0 +1,16 @@
+#!/bin/bash
+git init /root/my-repo
+
+# Create a watcher for the git config file.
+DIRECTORY_TO_WATCH="/root/my-repo/.git/config"
+RESULT_FILE="/tmp/local-config"
+RESULT_SCRIPT="/usr/local/bin/local-config-touched"
+
+cat > ${RESULT_SCRIPT} << EOF
+#!/bin/bash
+echo "success" > ${RESULT_FILE}
+EOF
+
+chmod +x ${RESULT_SCRIPT}
+
+inotifyd ${RESULT_SCRIPT} ${DIRECTORY_TO_WATCH} &

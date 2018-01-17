@@ -1,0 +1,9 @@
+#!/bin/bash
+# Check if the /root/.gitconfig file was accessed
+# See setup for details
+if grep -q success "/tmp/global-config"; then
+  echo "DIAG: The global Git config was not accessed"
+  exit 1
+fi
+
+exit 0

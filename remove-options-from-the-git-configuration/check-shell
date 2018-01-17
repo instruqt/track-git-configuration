@@ -1,0 +1,20 @@
+#!/bin/bash
+# Check if the global git config exists.
+if [ ! -f /root/.gitconfig ]; then
+  echo "DIAG: The global configuration file does not exist"
+  exit 1
+fi
+
+COMMAND=$(cat /root/.bash_history | grep "^git config" | grep "\-\-global" | grep "\-\-unset" | grep "advice\.statusHints" | wc -l)
+if [ $COMMAND -eq 0 ]; then
+  echo "DIAG: The command to remove the advice.statusHints option in the global configuration was not run"
+  exit 1
+fi
+
+STATUSHINTS=$(git config --global --get advice.statusHints)
+if [ ! -z $STATUSHINTS ]; then
+  echo "DIAG: advice.statusHints was not removed"
+  exit 1
+fi
+
+exit 0

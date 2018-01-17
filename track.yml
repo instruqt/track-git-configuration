@@ -1,0 +1,296 @@
+type: track
+slug: git-configuration
+icon: https://storage.googleapis.com/instruqt-frontend/img/tracks/git.png
+title: Configuring Git
+teaser: Add and remove configuration options for Git.
+description: |-
+  The git config command is a convenience function that is used to set Git configuration values on a global or local project level.
+  These configuration levels correspond to .gitconfig text files.
+  Executing git config will modify a configuration text file.
+
+  We'll be covering common configuration settings like email, username, and editor.
+tags:
+- git
+- version control
+challenges:
+- slug: the-git-configuration
+  credits: 10
+  title: Git configuration
+  teaser: See which options are available in the Git configuration.
+  notes:
+  - type: text
+    title: Git configuration
+    contents: |-
+      The **git config** command is a **convenience function** that is used to set Git configuration values on a **global** or **local** project level.
+  assignment: |-
+    Run the **git config** command to see which options are available.
+  difficulty: basic
+  timelimit: 900
+  points: 50
+  unlocks:
+  - add-options-to-the-git-configuration
+  tabs:
+  - type: terminal
+    title: Git
+    hostname: shell
+- slug: add-options-to-the-git-configuration
+  credits: 10
+  title: Add options to the Git configuration
+  teaser: Learn how to update the local Git configuration.
+  notes:
+  - type: text
+    title: Adding options
+    contents: |-
+      Configuration names are dot delimited strings composed of a **section** and a **key** based on their hierarchy.
+      Such as **user.email**.
+
+      In this example, email is a **child property** of the user **configuration block**.
+  - type: text
+    title: Adding options
+    contents: |-
+      Git’s configuration files are **plain-text**, and values can be set by manually **editing the file** and inserting the correct syntax.
+
+      It is easier to run the git config command, though.
+  - type: text
+    title: Adding options
+    contents: |-
+      Setting options in a git config can be done with:
+
+      **git config --add** section.key
+
+      This adds a new line to the option without altering any existing values.
+  assignment: |-
+    Set the **user.name** configuration option of the **local** Git config in the **my-repo** repository.
+  difficulty: basic
+  timelimit: 900
+  points: 50
+  unlocks:
+  - local-git-configuration-file
+  tabs:
+  - type: terminal
+    title: Git
+    hostname: shell
+- slug: local-git-configuration-file
+  credits: 10
+  title: Local Git configuration file
+  teaser: Learn where the local Git configuration is stored.
+  notes:
+  - type: text
+    title: Local config
+    contents: |-
+      **Local** configuration options for Git are stored in a config **file**.
+
+      This file is located **in the repository** directory, in a hidden directory at  **.git/config**.
+  - type: text
+    title: Local config
+    contents: |-
+      Git configuration files have **section** names in **brackets** e.g. [user].
+      These are followed by their child properties, which are **key/value** pairs.
+      ```
+      [user]
+        email = "hello@email.com"
+      ```
+  assignment: |-
+    Take a look at the contents of the **local** Git **config file** in the **my-repo** repository.
+  difficulty: basic
+  timelimit: 900
+  points: 50
+  unlocks:
+  - add-global-options-to-the-git-configuration
+  tabs:
+  - type: terminal
+    title: Git
+    hostname: shell
+- slug: add-global-options-to-the-git-configuration
+  credits: 10
+  title: Add global options to the Git configuration
+  teaser: Learn how to update the global Git configuration.
+  notes:
+  - type: text
+    title: Global config
+    contents: |-
+      The **git config** command can accept **arguments** to specify which **configuration level** to operate on.
+  - type: text
+    title: Global config
+    contents: |-
+      By **default**, git config will write to a **local level** if no configuration option is passed.
+
+      Local level configuration is applied to the **context repository** git config gets invoked in.
+  - type: text
+    title: Global config
+    contents: |-
+      **Global level** configuration is **user-specific**, meaning it is applied to an **operating system user**.
+
+      Global configuration values are stored in a file that is located in a **user's home directory**.
+  - type: text
+    title: Global config
+    contents: |-
+      **System level** configuration is applied across an **entire machine**.
+      This covers **all users** on an operating system and **all repos**.
+
+      The system level configuration file lives in a gitconfig file off the **system root path**.
+  - type: text
+    title: Global config
+    contents: |-
+      The **order of priority** for configuration levels is: **local**, **global**, **system**.
+
+      This means when looking for a configuration value, Git will **start** at the local level and **bubble up** to the system level.
+  - type: text
+    title: Global config
+    contents: |-
+      To set a global config option we can use the **--global** flag so this value is set for the current operating system user.
+  assignment: |-
+    Set the **user.name** and **user.email** options in the **global** Git configuration.
+  difficulty: basic
+  timelimit: 900
+  points: 50
+  unlocks:
+  - global-git-configuration-file
+  tabs:
+  - type: terminal
+    title: Git
+    hostname: shell
+- slug: global-git-configuration-file
+  credits: 10
+  title: Global Git configuration file
+  teaser: Learn where the global Git configuration is stored.
+  notes:
+  - type: text
+    title: Global config
+    contents: |-
+      Global configuration values are stored in a hidden file called **.gitconfig** that is located in a user's **home directory**.
+  assignment: |-
+    Take a look at the contents of the **global** Git **config file**.
+  difficulty: basic
+  timelimit: 900
+  points: 50
+  unlocks:
+  - list-git-configuration-options
+  tabs:
+  - type: terminal
+    title: Git
+    hostname: shell
+- slug: list-git-configuration-options
+  credits: 10
+  title: List Git configuration options
+  teaser: Learn how to get a list of all Git configuration options.
+  notes:
+  - type: text
+    title: List options
+    contents: |-
+      To see which options are set, you don't have to open the configuration files.
+
+      Instead you can use **git config --list** to list all set options.
+  assignment: |-
+    **List** the **global** Git configuration options.
+  difficulty: basic
+  timelimit: 900
+  points: 50
+  unlocks:
+  - view-specific-git-configuration-options
+  tabs:
+  - type: terminal
+    title: Git
+    hostname: shell
+- slug: view-specific-git-configuration-options
+  credits: 10
+  title: View specific Git configuration options
+  teaser: Learn how to get the value of a specific Git configuration option.
+  notes:
+  - type: text
+    title: View options
+    contents: |-
+      To see the values of a specific configuration option, you can use:
+
+      **git config --get key.value**
+  assignment: |-
+    **Get** the **global** value of the **user.name** Git configuration option.
+  difficulty: basic
+  timelimit: 900
+  points: 50
+  unlocks:
+  - remove-options-from-the-git-configuration
+  tabs:
+  - type: terminal
+    title: Git
+    hostname: shell
+- slug: remove-options-from-the-git-configuration
+  credits: 10
+  title: Remove options from the Git configuration
+  teaser: Learn how to remove values from the Git configuration.
+  notes:
+  - type: text
+    title: Remove options
+    contents: |-
+      When you want to remove the values of a configuration option, you can use **git config --unset key.value**.
+  assignment: |-
+    We have set the **advice.statusHints** in the global configuration to false.
+
+    **Unset** this option so we get hints again.
+  difficulty: basic
+  timelimit: 900
+  points: 50
+  unlocks:
+  - set-a-default-editor-for-git-actions
+  tabs:
+  - type: terminal
+    title: Git
+    hostname: shell
+- slug: set-a-default-editor-for-git-actions
+  credits: 10
+  title: Set a default editor for Git actions
+  teaser: Learn how to set the default Git editor to your own favorite.
+  notes:
+  - type: text
+    title: Default editor
+    contents: |-
+      Many Git commands will launch a **text editor** to **prompt** for further **input**.
+
+      One of the most common use cases for git config is configuring which editor Git should use.
+  - type: text
+    title: Default editor
+    contents: |-
+      Setting the editor is as simple as setting the **core.editor** option.
+
+      Here are some popular editors and matching git config commands:
+      - **Emacs**: git config --global core.editor "emacs"
+      - **Nano**: git config --global core.editor "nano -w"
+      - **Vim**: git config --global core.editor "vim"
+      - **Atom**: git config --global core.editor "atom --wait"
+  assignment: |-
+    Set the **global** default **editor** configuration option to your favorite editor (**vim/nano/emacs**).
+  difficulty: basic
+  timelimit: 900
+  points: 50
+  unlocks:
+  - edit-the-git-configuration-with-the-editor
+  tabs:
+  - type: terminal
+    title: Git
+    hostname: shell
+- slug: edit-the-git-configuration-with-the-editor
+  credits: 10
+  title: Edit the Git configuration with the editor
+  teaser: Learn how to edit the Git configuration files in place.
+  notes:
+  - type: text
+    title: Edit config
+    contents: |-
+      Sometimes it is easier to edit the configuration file directly.
+
+      By adding the **--edit flag**, git will open up the config file in your **default editor**.
+  assignment: |-
+    **Edit** the **global** Git configuration, set the **advice.statusHints** back to **false** and exit the editor.
+  difficulty: basic
+  timelimit: 900
+  points: 50
+  unlocks: []
+  tabs:
+  - type: terminal
+    title: Git
+    hostname: shell
+developers:
+- erik@instruqt.com
+- bas@instruqt.com
+- niels@instruqt.com
+published: true

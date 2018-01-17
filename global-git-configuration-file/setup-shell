@@ -1,0 +1,13 @@
+#!/bin/bash
+# Create a watcher for the global git config file.
+DIRECTORY_TO_WATCH="/root/.gitconfig"
+RESULT_FILE="/tmp/global-config"
+RESULT_SCRIPT="/usr/local/bin/global-config-touched"
+
+cat > ${RESULT_SCRIPT} << EOF
+#!/bin/bash
+echo "success" > ${RESULT_FILE}
+EOF
+
+chmod +x ${RESULT_SCRIPT}
+inotifyd ${RESULT_SCRIPT} ${DIRECTORY_TO_WATCH} &

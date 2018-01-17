@@ -1,0 +1,14 @@
+#!/bin/bash
+# Check if the global git config exists.
+if [ ! -f /root/.gitconfig ]; then
+  echo "DIAG: The global configuration file does not exist"
+  exit 1
+fi
+
+COMMAND=$(cat /root/.bash_history | grep "^git config" | grep "\-\-global" | grep "\-\-get" | grep "user\.name" | wc -l)
+if [ $COMMAND -eq 0 ]; then
+  echo "DIAG: The command to get the user.name value of the global configuration was not run"
+  exit 1
+fi
+
+exit 0

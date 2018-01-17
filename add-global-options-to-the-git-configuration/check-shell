@@ -1,0 +1,22 @@
+#!/bin/bash
+# Check if the global git config exists.
+if [ ! -f /root/.gitconfig ]; then
+  echo "DIAG: The global configuration file does not exist"
+  exit 1
+fi
+
+# Check if the user.name is set.
+USER_NAME=$(git config --global --get user.name)
+if [ -z $USER_NAME ]; then
+  echo "DIAG: The global user.name option is not set"
+  exit 1
+fi
+
+# Check if the user.email is set.
+USER_EMAIL=$(git config --global --get user.email)
+if [ -z $USER_EMAIL ]; then
+  echo "DIAG: The global user.email option is not set"
+  exit 1
+fi
+
+exit 0

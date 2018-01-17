@@ -1,0 +1,4 @@
+#!/bin/bash
+rm -rf /root/my-repo
+rm /tmp/result
+killall inotifyd

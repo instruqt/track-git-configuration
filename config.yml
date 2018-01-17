@@ -1,0 +1,10 @@
+template: containers
+configuration:
+  Containers:
+  - Image: gcr.io/instruqt/shell-git:latest
+    Name: shell
+    Ports: []
+    Privileged: false
+    Resources:
+      Memory: 128
+    Shell: /bin/bash
