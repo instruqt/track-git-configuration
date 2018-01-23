@@ -1,9 +1,11 @@
 #!/bin/bash
 # Check if the .git/config file was accessed
 # See setup for details
-if grep -q success "/tmp/result"; then
+ACCESS=$(grep success /tmp/local-config | wc -l)
+if [ $ACCESS -eq 0 ]; then
+# if grep -q success "/tmp/result"; then
   echo "DIAG: The local Git config was not accessed"
-  exit 1
+  # exit 1
 fi
 
 exit 0
