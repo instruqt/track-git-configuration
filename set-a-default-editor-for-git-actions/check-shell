@@ -11,12 +11,6 @@ if [ $COMMAND -eq 0 ]; then
   exit 1
 fi
 
-COMMAND=$(cat /root/.bash_history | grep "^git config" | grep "\-\-global" | grep "\-\-add" | grep "core\.editor" | wc -l)
-if [ $COMMAND -eq 0 ]; then
-  echo "DIAG: You forgot the --add parameter. Try again!"
-  exit 1
-fi
-
 EDITOR=$(git config --global --get core.editor)
 if [ -z $EDITOR ]; then
   echo "DIAG: The default editor is not set in the global configuration"
