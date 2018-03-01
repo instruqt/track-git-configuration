@@ -5,9 +5,15 @@ if [ ! -f /root/.gitconfig ]; then
   exit 1
 fi
 
-COMMAND=$(cat /root/.bash_history | grep "^git config" | grep "\-\-global" | grep "\-\-add" | grep "core\.editor" | wc -l)
+COMMAND=$(cat /root/.bash_history | grep "^git config" | grep "\-\-global" | grep "core\.editor" | wc -l)
 if [ $COMMAND -eq 0 ]; then
   echo "DIAG: The command to set the core.editor value of the global configuration was not run"
+  exit 1
+fi
+
+COMMAND=$(cat /root/.bash_history | grep "^git config" | grep "\-\-global" | grep "\-\-add" | grep "core\.editor" | wc -l)
+if [ $COMMAND -eq 0 ]; then
+  echo "DIAG: You forgot the --add parameter. Try again!"
   exit 1
 fi
 
